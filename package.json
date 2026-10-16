@@ -4,7 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "npm --prefix frontend run dev",
-    "build": "node -e \"const {execSync}=require('child_process'), fs=require('fs'); console.log('Installing frontend dependencies...'); execSync('npm --prefix frontend install', {stdio:'inherit'}); console.log('Building frontend...'); execSync('npm --prefix frontend run build', {stdio:'inherit'}); fs.cpSync('frontend/dist', 'dist', {recursive:true}); console.log('Copied build to dist successfully.');\"",
+    "build": "node -e \"const {execSync}=require('child_process'), fs=require('fs'); console.log('Installing frontend dependencies...'); execSync('npm install', {cwd:'frontend', stdio:'inherit'}); console.log('Building frontend with cwd=frontend...'); execSync('npm run build', {cwd:'frontend', stdio:'inherit'}); fs.cpSync('frontend/dist', 'dist', {recursive:true}); console.log('Copied build to dist successfully.');\"",
     "start": "npm --prefix frontend run dev"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0"
   }
 }
