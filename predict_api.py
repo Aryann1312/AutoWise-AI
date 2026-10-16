@@ -36,13 +36,28 @@ class PredictHandler(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
         self._set_headers(200)
 
+    def do_HEAD(self):
+        self._set_headers(200)
+
     def do_GET(self):
-        if self.path == "/health":
+        if self.path in ("/", "/health"):
             self._set_headers(200)
-            self.wfile.write(json.dumps({"status": "ok", "model": model_name}).encode("utf-8"))
+            payload = {
+                "status": "online",
+                "service": "AutoWise AI Prediction API",
+                "model": model_name,
+                "endpoints": {
+                    "POST /predict": "Predict used car price",
+                    "GET /health": "Health check"
+                }
+            }
+            self.wfile.write(json.dumps(payload, indent=2).encode("utf-8"))
+        elif self.path == "/favicon.ico":
+            self.send_response(204)
+            self.end_headers()
         else:
             self._set_headers(404)
-            self.wfile.write(json.dumps({"error": "Not found"}).encode("utf-8"))
+            self.wfile.write(json.dumps({"error": "Endpoint not found"}).encode("utf-8"))
 
     def do_POST(self):
         if self.path == "/predict":
