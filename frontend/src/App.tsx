@@ -90,13 +90,13 @@ const mlTeamMembers: TeamMember[] = [
 ];
 
 export default function App() {
-  // Check URL param or default to predict view so the redesigned input page is immediately visible
+  // Default to landing page when user opens the site
   const [currentView, setCurrentView] = useState<"landing" | "predict">(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
-      if (params.get("view") === "landing") return "landing";
+      if (params.get("view") === "predict") return "predict";
     }
-    return "predict";
+    return "landing";
   });
 
   const [isLoading, setIsLoading] = useState(false);
@@ -118,7 +118,7 @@ export default function App() {
   const handleBackToLanding = () => {
     setCurrentView("landing");
     if (typeof window !== "undefined") {
-      window.history.pushState({}, "", "?view=landing");
+      window.history.pushState({}, "", window.location.pathname);
     }
   };
 
@@ -148,7 +148,7 @@ export default function App() {
           AutoWise AI
         </h1>
         <button
-          onClick={() => setCurrentView("predict")}
+          onClick={launchPredictPage}
           className="text-xs uppercase tracking-wider text-zinc-400 hover:text-zinc-200 transition-colors border border-zinc-800 rounded-md px-3 py-1.5 bg-zinc-900/60"
         >
           Go to Predictor →
