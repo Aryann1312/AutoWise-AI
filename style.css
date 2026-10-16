@@ -1,0 +1,746 @@
+/* =====================================================================
+   AutoWise AI - Custom Dark Theme & 3D Floating Card Design System
+   Red Accent Theme with Precision Row-by-Row Alignment
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+/* --------------------------------------------------
+   1. Root & Background Styling
+   -------------------------------------------------- */
+html, body, [data-testid="stAppViewContainer"] {
+    font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+.stApp {
+    background: radial-gradient(ellipse 90% 80% at 50% -10%, #1e153d 0%, #0d0e23 50%, #070712 100%) !important;
+    background-attachment: fixed !important;
+    color: #f1f5f9 !important;
+    font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
+}
+
+/* Hide default streamlit decorations */
+header[data-testid="stHeader"] {
+    background: transparent !important;
+}
+
+#MainMenu, footer {
+    visibility: hidden;
+}
+
+/* Page container: max-width 960px centered with generous margins */
+.main .block-container,
+[data-testid="stMainBlockContainer"] {
+    max-width: 960px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    padding-top: 32px !important;
+    padding-bottom: 72px !important;
+    margin: 0 auto !important;
+}
+
+/* --------------------------------------------------
+   2. Page Hero Header
+   -------------------------------------------------- */
+.autowise-hero {
+    text-align: center;
+    padding: 10px 0 36px 0;
+}
+
+.autowise-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 16px;
+    background: rgba(255, 75, 75, 0.12);
+    border: 1px solid rgba(255, 75, 75, 0.3);
+    border-radius: 9999px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #ff8a8a;
+    margin-bottom: 12px;
+    backdrop-filter: blur(8px);
+}
+
+.autowise-title {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 3.1rem !important;
+    font-weight: 800 !important;
+    letter-spacing: -0.03em !important;
+    line-height: 1.15 !important;
+    background: linear-gradient(135deg, #ffffff 25%, #ffb4a2 65%, #ff6b6b 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    margin: 0 0 10px 0 !important;
+}
+
+.autowise-tagline {
+    font-size: 1.05rem !important;
+    color: #94a3b8 !important;
+    margin: 0 auto !important;
+    max-width: 620px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.01em !important;
+}
+
+/* --------------------------------------------------
+   3. 3D Floating Cards (Main Card & Evaluation Card)
+   -------------------------------------------------- */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    max-width: 960px !important;
+    margin: 0 auto 56px auto !important;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease !important;
+}
+
+/* Generous breathing room between both big cards */
+.card-separator {
+    height: 38px;
+    width: 100%;
+    display: block;
+}
+
+div[data-testid="stVerticalBlockBorderWrapper"] > div {
+    background: linear-gradient(180deg, rgba(23, 27, 53, 0.88) 0%, rgba(15, 18, 38, 0.92) 100%) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    border-radius: 26px !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.22) !important;
+    box-shadow: 
+        0 24px 50px -12px rgba(0, 0, 0, 0.75),
+        0 12px 24px -6px rgba(0, 0, 0, 0.55),
+        0 1px 0 rgba(255, 255, 255, 0.14) inset,
+        0 0 0 1px rgba(255, 75, 75, 0.06) !important;
+    padding: 38px 42px !important;
+    transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+/* Subtle hover lift on card */
+div[data-testid="stVerticalBlockBorderWrapper"]:hover > div {
+    transform: translateY(-4px) !important;
+    box-shadow: 
+        0 36px 70px -15px rgba(0, 0, 0, 0.88),
+        0 18px 32px -8px rgba(0, 0, 0, 0.65),
+        0 1px 0 rgba(255, 255, 255, 0.24) inset,
+        0 0 32px rgba(255, 75, 75, 0.12) !important;
+    border-top-color: rgba(255, 120, 100, 0.35) !important;
+}
+
+/* Card Section Header */
+.card-header {
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.card-title {
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.55rem !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    letter-spacing: -0.01em !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.card-subtitle {
+    font-size: 0.92rem !important;
+    color: #94a3b8 !important;
+    margin-top: 4px !important;
+    margin-bottom: 0 !important;
+}
+
+/* --------------------------------------------------
+   4. Form Input Controls Inside Card (Grid & Alignment)
+   Pixel-Perfect Side-by-Side Row Alignment
+   -------------------------------------------------- */
+
+/* Row container for columns */
+div[data-testid="stHorizontalBlock"] {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+    margin-bottom: 16px !important;
+    width: 100% !important;
+}
+
+div[data-testid="stColumn"] {
+    flex: 1 1 0% !important;
+    width: 50% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div[data-testid="stColumn"] > div[data-testid="stVerticalBlock"] {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    gap: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure widget root containers start at the exact same top baseline */
+div[data-testid="stSelectbox"],
+div[data-testid="stNumberInput"],
+div[data-testid="stTextInput"],
+div[data-testid="stButtonGroup"],
+.stSelectbox,
+.stNumberInput {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+}
+
+/* Widget Labels - Exactly 24px height on identical baseline across all columns */
+[data-testid="stWidgetLabel"],
+label[data-testid="stWidgetLabel"],
+div[data-testid="stWidgetLabel"],
+.eu1rstf0 {
+    min-height: 24px !important;
+    height: 24px !important;
+    max-height: 24px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    margin-top: 0 !important;
+    margin-bottom: 6px !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    color: #cbd5e1 !important;
+    -webkit-text-fill-color: #cbd5e1 !important;
+}
+
+[data-testid="stWidgetLabel"] label,
+[data-testid="stWidgetLabel"] p,
+[data-testid="stWidgetLabel"] span,
+[data-testid="stWidgetLabel"] div {
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    color: #cbd5e1 !important;
+    -webkit-text-fill-color: #cbd5e1 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 24px !important;
+    letter-spacing: 0.01em !important;
+    display: inline-flex !important;
+    align-items: center !important;
+}
+
+[data-testid="stWidgetLabel"] [data-testid="stTooltipIcon"] {
+    margin-left: 6px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    vertical-align: middle !important;
+    height: 18px !important;
+}
+
+/* Dropdown Selectboxes - Exactly 46px height & unified box styling */
+div[data-baseweb="select"],
+div[data-testid="stSelectbox"] > div:not([data-testid="stWidgetLabel"]) {
+    border-radius: 12px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    box-sizing: border-box !important;
+}
+
+div[data-baseweb="select"] > div,
+div[data-testid="stSelectbox"] [role="combobox"],
+div[data-testid="stSelectbox"] > div:not([data-testid="stWidgetLabel"]) > div {
+    background: rgba(12, 16, 34, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    box-sizing: border-box !important;
+    color: #f1f5f9 !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+
+div[data-baseweb="select"] > div:hover,
+div[data-testid="stSelectbox"] [role="combobox"]:hover,
+div[data-testid="stSelectbox"] > div:not([data-testid="stWidgetLabel"]) > div:hover {
+    border-color: rgba(255, 255, 255, 0.24) !important;
+    background: rgba(16, 21, 44, 0.9) !important;
+}
+
+div[data-baseweb="select"] > div:focus-within,
+div[data-testid="stSelectbox"] [role="combobox"]:focus-within,
+div[data-testid="stSelectbox"] > div:not([data-testid="stWidgetLabel"]) > div:focus-within {
+    border-color: #ff4b4b !important;
+    box-shadow: 0 0 0 3px rgba(255, 75, 75, 0.22), 0 0 16px rgba(255, 75, 75, 0.2) !important;
+    background: rgba(16, 21, 44, 0.98) !important;
+}
+
+div[data-testid="stSelectbox"] input {
+    color: #f1f5f9 !important;
+    -webkit-text-fill-color: #f1f5f9 !important;
+    font-size: 0.95rem !important;
+}
+
+/* Number Inputs - Exactly 46px height & unified box styling matching selectbox */
+div[data-baseweb="input"],
+div[data-testid="stNumberInputContainer"],
+div[data-testid="stNumberInput"] > div:not([data-testid="stWidgetLabel"]),
+div[data-testid="stNumberInput"] > div:not([data-testid="stWidgetLabel"]) > div {
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+}
+
+div[data-baseweb="input"] > div,
+div[data-testid="stNumberInputContainer"],
+div[data-testid="stNumberInput"] div[data-baseweb="input"] {
+    background: rgba(12, 16, 34, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    box-sizing: border-box !important;
+    color: #f1f5f9 !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    display: flex !important;
+    align-items: center !important;
+    margin: 0 !important;
+}
+
+div[data-baseweb="input"] > div:hover,
+div[data-testid="stNumberInputContainer"]:hover,
+div[data-testid="stNumberInput"] div[data-baseweb="input"]:hover {
+    border-color: rgba(255, 255, 255, 0.24) !important;
+    background: rgba(16, 21, 44, 0.9) !important;
+}
+
+div[data-baseweb="input"] > div:focus-within,
+div[data-testid="stNumberInputContainer"]:focus-within,
+div[data-testid="stNumberInput"] div[data-baseweb="input"]:focus-within {
+    border-color: #ff4b4b !important;
+    box-shadow: 0 0 0 3px rgba(255, 75, 75, 0.22), 0 0 16px rgba(255, 75, 75, 0.2) !important;
+    background: rgba(16, 21, 44, 0.98) !important;
+}
+
+div[data-testid="stNumberInput"] input {
+    color: #ffffff !important;
+    font-weight: 500 !important;
+    height: 44px !important;
+    font-size: 0.95rem !important;
+}
+
+div[data-testid="stNumberInput"] button {
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: none !important;
+    color: #94a3b8 !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stNumberInput"] button:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    color: #ffffff !important;
+}
+
+/* --------------------------------------------------
+   5. Pill-style Segmented Buttons (Fuel & Transmission)
+   Red Theme Active State & Pixel-Perfect Alignment
+   -------------------------------------------------- */
+
+/* Full-width container extending to 100% of the card column */
+div[data-testid="stButtonGroup"],
+.stButtonGroup,
+div[data-testid="stSegmentedControl"],
+div[data-testid="stPills"],
+.st-key-fuel_type_control,
+.st-key-transmission_control {
+    width: 100% !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Outer frame of the segmented button group - Exactly 46px height */
+div[data-testid="stButtonGroup"] > div:not([data-testid="stWidgetLabel"]),
+.stButtonGroup > div:not([data-testid="stWidgetLabel"]),
+div[data-testid="stButtonGroup"] [role="group"],
+div[data-testid="stSegmentedControl"] > div:not([data-testid="stWidgetLabel"]),
+div[data-testid="stSegmentedControl"] [data-baseweb="button-group"],
+div[data-testid="stSegmentedControl"] [role="radiogroup"],
+div[data-testid="stPills"] > div:not([data-testid="stWidgetLabel"]),
+.st-key-fuel_type_control > div:not([data-testid="stWidgetLabel"]),
+.st-key-transmission_control > div:not([data-testid="stWidgetLabel"]) {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    background: rgba(12, 16, 34, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 3px !important;
+    gap: 4px !important;
+    box-sizing: border-box !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
+    align-items: stretch !important;
+    margin-top: 0 !important;
+}
+
+/* Individual Segmented Button: stretches to fill the row evenly */
+div[data-testid="stButtonGroup"] button,
+div[data-testid="stButtonGroup"] [data-variant="segmented_control"],
+.stButtonGroup button,
+div[data-testid="stSegmentedControl"] button,
+button[kind="segmented_control"],
+button[kind="pills"] {
+    flex: 1 1 0% !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 9px !important;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+    color: #94a3b8 !important;
+    font-size: 0.92rem !important;
+    font-weight: 500 !important;
+    padding: 6px 10px !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    box-sizing: border-box !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+}
+
+/* Hover on unselected buttons */
+div[data-testid="stButtonGroup"] button:hover,
+div[data-testid="stButtonGroup"] [data-variant="segmented_control"]:hover,
+.stButtonGroup button:hover,
+div[data-testid="stSegmentedControl"] button:hover,
+div[data-testid="stPills"] button:hover,
+button[kind="segmented_control"]:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* ACTIVE / SELECTED STATE: Signature Red Theme */
+button[kind="segmented_controlActive"],
+button[kind="pillsActive"],
+div[data-testid="stButtonGroup"] [data-selected],
+div[data-testid="stButtonGroup"] [data-selected="true"],
+div[data-testid="stButtonGroup"] button[data-selected],
+div[data-testid="stButtonGroup"] button[data-selected="true"],
+.stButtonGroup [data-selected],
+.stButtonGroup [data-selected="true"],
+div[data-testid="stSegmentedControl"] button[data-selected],
+div[data-testid="stSegmentedControl"] button[aria-checked="true"],
+div[data-testid="stSegmentedControl"] button[data-checked="true"],
+div[data-testid="stSegmentedControl"] button[aria-selected="true"],
+div[data-testid="stSegmentedControl"] button[data-selected="true"],
+div[data-testid="stPills"] button[data-selected],
+div[data-testid="stPills"] button[aria-checked="true"],
+div[data-testid="stPills"] button[data-checked="true"],
+div[data-testid="stPills"] button[aria-selected="true"] {
+    background: rgba(255, 75, 75, 0.14) !important;
+    color: #ff4b4b !important;
+    font-weight: 600 !important;
+    border: 1.5px solid #ff4b4b !important;
+    box-shadow: 0 0 12px rgba(255, 75, 75, 0.35) !important;
+    outline: none !important;
+}
+
+/* Force signature red text inside active selected button */
+button[kind="segmented_controlActive"] *,
+button[kind="pillsActive"] *,
+div[data-testid="stButtonGroup"] [data-selected] *,
+div[data-testid="stButtonGroup"] [data-selected="true"] *,
+.stButtonGroup [data-selected] *,
+.stButtonGroup [data-selected="true"] *,
+div[data-testid="stSegmentedControl"] button[data-selected] *,
+div[data-testid="stSegmentedControl"] button[aria-checked="true"] *,
+div[data-testid="stPills"] button[data-selected] * {
+    color: #ff4b4b !important;
+    -webkit-text-fill-color: #ff4b4b !important;
+}
+
+/* Horizontal Radio Fallback */
+div[data-testid="stRadio"] div[role="radiogroup"] {
+    display: flex !important;
+    flex-direction: row !important;
+    width: 100% !important;
+    background: rgba(12, 16, 34, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 3px !important;
+    gap: 4px !important;
+    min-height: 46px !important;
+}
+
+div[data-testid="stRadio"] div[role="radiogroup"] label {
+    flex: 1 1 0% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 9px !important;
+    padding: 6px 12px !important;
+    margin: 0 !important;
+    background: transparent !important;
+    color: #94a3b8 !important;
+    font-size: 0.92rem !important;
+    font-weight: 500 !important;
+    border: 1px solid transparent !important;
+    transition: all 0.2s ease !important;
+    cursor: pointer !important;
+}
+
+div[data-testid="stRadio"] div[role="radiogroup"] label:has(input:checked) {
+    background: rgba(255, 75, 75, 0.14) !important;
+    color: #ff4b4b !important;
+    font-weight: 600 !important;
+    border: 1.5px solid #ff4b4b !important;
+    box-shadow: 0 0 12px rgba(255, 75, 75, 0.35) !important;
+}
+
+/* --------------------------------------------------
+   6. Data Coverage Box (Rounded Soft Blue Tint)
+   -------------------------------------------------- */
+div[data-testid="stAlert"] {
+    background: rgba(16, 38, 80, 0.45) !important;
+    border: 1px solid rgba(59, 130, 246, 0.35) !important;
+    border-radius: 14px !important;
+    padding: 14px 20px !important;
+    backdrop-filter: blur(10px) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+    margin: 18px 0 !important;
+}
+
+div[data-testid="stAlert"] p,
+div[data-testid="stAlert"] div {
+    color: #93c5fd !important;
+    font-size: 0.94rem !important;
+    font-weight: 400 !important;
+}
+
+/* --------------------------------------------------
+   7. Predict Selling Price Button (Red-to-Orange Gradient)
+   -------------------------------------------------- */
+div[data-testid="stButton"] {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 16px !important;
+    margin-bottom: 8px !important;
+}
+
+div[data-testid="stButton"] > button {
+    width: 60% !important;
+    max-width: 60% !important;
+    min-width: 260px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    border-radius: 14px !important;
+    background: linear-gradient(135deg, #ff4b4b 0%, #ff7a3d 100%) !important;
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.03em !important;
+    border: none !important;
+    box-shadow: 0 8px 24px -4px rgba(255, 75, 75, 0.5) !important;
+    cursor: pointer !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+div[data-testid="stButton"] > button,
+div[data-testid="stButton"] > button[kind="primary"],
+div[data-testid="stButton"] > button p,
+div[data-testid="stButton"] > button span,
+div[data-testid="stButton"] > button div {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+    font-family: 'Poppins', sans-serif !important;
+    font-size: 1.25rem !important;
+    font-weight: 800 !important;
+    letter-spacing: 0.02em !important;
+}
+
+div[data-testid="stButton"] > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 14px 32px -2px rgba(255, 75, 75, 0.72), 0 0 24px rgba(255, 122, 61, 0.45) !important;
+    background: linear-gradient(135deg, #ff5c5c 0%, #ff8c4a 100%) !important;
+    color: #000000 !important;
+}
+
+div[data-testid="stButton"] > button:hover p,
+div[data-testid="stButton"] > button:hover span {
+    color: #000000 !important;
+    -webkit-text-fill-color: #000000 !important;
+}
+
+div[data-testid="stButton"] > button:active {
+    transform: translateY(1px) !important;
+    box-shadow: 0 4px 12px rgba(255, 75, 75, 0.4) !important;
+}
+
+/* Shine Sweep Animation on Hover */
+div[data-testid="stButton"] > button::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -130% !important;
+    width: 60% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent) !important;
+    transform: skewX(-25deg) !important;
+    transition: none !important;
+    pointer-events: none !important;
+}
+
+div[data-testid="stButton"] > button:hover::before {
+    left: 180% !important;
+    transition: left 0.75s ease-in-out !important;
+}
+
+/* --------------------------------------------------
+   8. Model Evaluation & Benchmarking Metric Cards
+   -------------------------------------------------- */
+div[data-testid="stMetric"] {
+    background: rgba(24, 30, 58, 0.6) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 16px !important;
+    padding: 18px 22px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+div[data-testid="stMetric"]:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.38) !important;
+    border-color: rgba(255, 120, 100, 0.25) !important;
+}
+
+div[data-testid="stMetric"] [data-testid="stMetricLabel"] {
+    color: #94a3b8 !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.04em !important;
+}
+
+div[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    color: #ffffff !important;
+    font-size: 1.6rem !important;
+    font-weight: 700 !important;
+    font-family: 'Poppins', sans-serif !important;
+    letter-spacing: -0.01em !important;
+}
+
+/* --------------------------------------------------
+   9. Expanders Styled as Rounded Inner Panels
+   -------------------------------------------------- */
+div[data-testid="stExpander"] {
+    background: rgba(14, 18, 38, 0.55) !important;
+    border: 1px solid rgba(255, 255, 255, 0.07) !important;
+    border-radius: 16px !important;
+    overflow: hidden !important;
+    margin-top: 14px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2) !important;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+div[data-testid="stExpander"]:hover {
+    border-color: rgba(255, 120, 100, 0.2) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+div[data-testid="stExpander"] summary {
+    padding: 14px 20px !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    color: #cbd5e1 !important;
+    border-radius: 16px !important;
+    transition: color 0.2s ease !important;
+}
+
+div[data-testid="stExpander"] summary:hover {
+    color: #ffffff !important;
+}
+
+div[data-testid="stExpander"] [data-testid="stExpanderDetails"] {
+    padding: 18px 22px !important;
+    background: rgba(9, 12, 26, 0.5) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+/* --------------------------------------------------
+   10. Mobile Responsiveness
+   -------------------------------------------------- */
+@media (max-width: 768px) {
+    .main .block-container,
+    [data-testid="stMainBlockContainer"] {
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+        padding-top: 20px !important;
+    }
+
+    div[data-testid="stVerticalBlockBorderWrapper"] > div {
+        padding: 24px 18px !important;
+        border-radius: 20px !important;
+    }
+
+    .autowise-title {
+        font-size: 2.2rem !important;
+    }
+
+    div[data-testid="stHorizontalBlock"] {
+        flex-direction: column !important;
+    }
+
+    div[data-testid="stColumn"] {
+        width: 100% !important;
+        min-width: 100% !important;
+        margin-bottom: 12px !important;
+    }
+
+    div[data-testid="stButton"] > button {
+        width: 88% !important;
+        max-width: 88% !important;
+        font-size: 1.15rem !important;
+    }
+
+    div[data-testid="stButton"] > button p,
+    div[data-testid="stButton"] > button span,
+    div[data-testid="stButton"] > button div {
+        font-size: 1.15rem !important;
+    }
+}
