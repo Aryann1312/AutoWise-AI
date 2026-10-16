@@ -34,7 +34,7 @@ const TeamShowcase = React.forwardRef<HTMLDivElement, TeamShowcaseProps>(
       members,
       className,
       onButtonClick,
-      redirectUrl = "http://localhost:8501",
+      redirectUrl = (import.meta.env.VITE_STREAMLIT_URL as string) || "http://localhost:8501",
       ...props
     },
     ref

@@ -4,6 +4,7 @@ Serves predictions directly from models/best_model.joblib on port 5001 with CORS
 """
 
 import json
+import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from pathlib import Path
 import joblib
@@ -97,9 +98,12 @@ class PredictHandler(BaseHTTPRequestHandler):
             self.wfile.write(json.dumps({"error": "Endpoint not found"}).encode("utf-8"))
 
 
-def run(port=5001):
-    server = HTTPServer(("0.0.0.0", port), PredictHandler)
-    print(f"Prediction API running on http://localhost:{port}/predict")
+def run(port=None):
+    if port is None:
+        port = int(os.environ.get("PORT", 5001))
+    host = os.environ.get("HOST", "0.0.0.0")
+    server = HTTPServer((host, port), PredictHandler)
+    print(f"Prediction API running on http://{host}:{port}/predict")
     server.serve_forever()
 
 

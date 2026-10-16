@@ -237,7 +237,8 @@ export function PredictPage({
       }
 
       // Default to live backend prediction endpoint
-      const response = await fetch("http://localhost:5001/predict", {
+      const apiBase = (import.meta.env.VITE_API_URL || "http://localhost:5001").replace(/\/$/, "");
+      const response = await fetch(`${apiBase}/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
